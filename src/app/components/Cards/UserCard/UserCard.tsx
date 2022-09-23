@@ -1,4 +1,7 @@
 import { IUser } from "../../../types";
+import { deleteUser } from "../../../services/users/userRequests";
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { HiOutlineRefresh } from 'react-icons/hi';
 import { 
     Card, 
     Title, 
@@ -9,12 +12,20 @@ import {
     Divisory, 
     Header,
     Banner, 
-    ProfileImage 
+    ProfileImage ,
+    ActionsIcons
 } from "./style";
 
-const UserCard = ({ name, email, age, observations}: IUser) => {
+const UserCard = ({ _id, name, email, age, observations}: IUser) => {
 
     const number = Math.floor(Math.random() * 9);
+
+    const handleDelete = async () => {
+        const data = await deleteUser(_id);
+        if (data.status === 200) {
+            window.location.reload();
+        }
+    };
 
     return (
         <Card>
@@ -22,11 +33,13 @@ const UserCard = ({ name, email, age, observations}: IUser) => {
                 <Banner loremIpsumNumber={number} />
                 <ProfileImage loremIpsumNumber={number} />
             </Header>
-            <CardDivisory>
-                <Title>
-                    {name}
-                </Title>
-            </CardDivisory>
+            <ActionsIcons className="teste">
+                <FaRegTrashAlt onClick={handleDelete} size={18} />
+                <HiOutlineRefresh size={21} />
+            </ActionsIcons>
+            <Title>
+                {name}
+            </Title>
             <CardDivisory>
                 <Legend>
                     Age

@@ -10,6 +10,19 @@ export const Card = styled.div`
     gap: 16px;
     position: relative;
     overflow: hidden;
+    
+    .teste {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease-in;
+    }
+
+    &:hover {
+        .teste {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
 `;
 
 export const Title = styled.span`
@@ -17,6 +30,7 @@ export const Title = styled.span`
     font-weight: 500;
     font-size: 32px;
     font-weight: 300;
+    padding-left: 22px;
 `;
 
 export const Legend = styled.p`
@@ -90,4 +104,25 @@ export const ProfileImage = styled.div<ImageProps>`
     left: 16px;
     background: ${({loremIpsumNumber}) => `url(https://picsum.photos/7${loremIpsumNumber}/7${loremIpsumNumber})`};
     background-size: cover;
+`;
+
+export const ActionsIcons = styled.div`
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+    top: 76px;
+    right: 8px;
+    
+
+    svg {
+        color: #BEBEBE;
+        transition: color 0.2s ease-in;
+
+        &:hover {
+            color: #FFFFFF;
+        }
+
+    }
+    
 `;

@@ -29,3 +29,12 @@ export const getUser = async (id: string) => {
   return data;
 };
 
+export const deleteUser = async (id: string) => {
+    const data = await request({
+        url: `/users/${id}`,
+        method: 'DELETE',
+    })
+    
+    return data;
+};
+
