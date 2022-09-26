@@ -6,9 +6,6 @@ const Navbar = () => {
     return (
         <Container>
             <List>
-                <Link to="/">
-                    <ListItem>Home</ListItem>
-                </Link>
                 <Link to="/users">
                     <ListItem>Users</ListItem>
                 </Link>

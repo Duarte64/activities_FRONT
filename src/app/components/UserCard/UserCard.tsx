@@ -1,7 +1,7 @@
-import { IUser } from "../../../types";
-import { deleteUser } from "../../../services/users/userRequests";
+import { IUser } from "../../types";
+import { deleteUser } from "../../services/users/userRequests";
 import { FaRegTrashAlt } from 'react-icons/fa';
-import { HiOutlineRefresh } from 'react-icons/hi';
+import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { 
     Card, 
     Title, 
@@ -35,7 +35,7 @@ const UserCard = ({ _id, name, email, age, observations}: IUser) => {
             </Header>
             <ActionsIcons className="teste">
                 <FaRegTrashAlt onClick={handleDelete} size={18} />
-                <HiOutlineRefresh size={21} />
+                <HiOutlinePencilAlt size={21} />
             </ActionsIcons>
             <Title>
                 {name}

@@ -2,7 +2,7 @@ import { IUser } from '../../types';
 import { getUsers } from '../../services/users/userRequests';
 import { Container } from './style';
 import { useEffect, useState } from 'preact/hooks';
-import UserCard from '../../components/Cards/UserCard';
+import UserCard from '../../components/UserCard';
 
 const Users = () => {
     const [users, setUsers] = useState<IUser[]>([]);
