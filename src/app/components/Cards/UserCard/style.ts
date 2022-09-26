@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Card = styled.div`
-    width: 232px;
+    width: 256px;
     height: 320px;
     border-radius: 8px;
     background-color: #1e1e1e;
@@ -10,6 +10,10 @@ export const Card = styled.div`
     gap: 16px;
     position: relative;
     overflow: hidden;
+
+    @media screen and (max-width: 571px) {
+        width: 100%;
+    }
     
     .teste {
         opacity: 0;
@@ -90,7 +94,7 @@ type ImageProps = {
 export const Banner = styled.div<ImageProps>`
     height: 100%;
     width: 100%;
-    background: ${({loremIpsumNumber}) => `url(https://picsum.photos/40${loremIpsumNumber}/15${loremIpsumNumber})`};
+    background: ${({loremIpsumNumber}) => `url(https://picsum.photos/4${loremIpsumNumber}/1${loremIpsumNumber})`};
     background-size: cover;
 `;
 
@@ -102,7 +106,7 @@ export const ProfileImage = styled.div<ImageProps>`
     position: absolute;
     top: 16px;
     left: 16px;
-    background: ${({loremIpsumNumber}) => `url(https://picsum.photos/7${loremIpsumNumber}/7${loremIpsumNumber})`};
+    background: ${({loremIpsumNumber}) => `url(https://picsum.photos/1${loremIpsumNumber}/1${loremIpsumNumber})`};
     background-size: cover;
 `;
 
@@ -118,6 +122,7 @@ export const ActionsIcons = styled.div`
     svg {
         color: #BEBEBE;
         transition: color 0.2s ease-in;
+        cursor: pointer;
 
         &:hover {
             color: #FFFFFF;

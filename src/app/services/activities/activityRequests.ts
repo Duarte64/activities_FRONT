@@ -1,12 +1,11 @@
-import { IActivity, Meta } from "../../types";
+import { IActivity } from "../../types";
 import request from "../requestInstance";
 
 type GetActivitiesType = {
     data: IActivity[];
-    meta: Meta;
 }
 
-export const getActivities = async () => {
+export const getActivities = async (): Promise<GetActivitiesType> => {
   const data = await request({
     url: '/activities',
     method: 'GET',

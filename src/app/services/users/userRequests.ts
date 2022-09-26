@@ -1,12 +1,11 @@
-import { IUser, Meta } from "../../types/index";
+import { IUser } from "../../types/index";
 import request from "../requestInstance";
 
 type GetUsersType = {
     data: IUser[];
-    meta: Meta;
 }
 
-export const getUsers = async () => {
+export const getUsers = async (): Promise<GetUsersType> => {
   const data = await request({
     url: '/users',
     method: 'GET',
@@ -17,10 +16,9 @@ export const getUsers = async () => {
 
 type GetUserType = {
     data: IUser;
-    meta: Meta;
 }
 
-export const getUser = async (id: string) => {
+export const getUser = async (id: string): Promise<GetUserType> => {
   const data = await request({
     url: `/users/${id}`,
     method: 'GET',

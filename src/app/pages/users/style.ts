@@ -7,5 +7,5 @@ export const Container = styled.div`
     gap: 12px;
     max-width: 1600px;
     width: 100%;
-    margin: 32px auto;
+    margin: 24px auto;
 `;

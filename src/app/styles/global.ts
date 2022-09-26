@@ -60,5 +60,9 @@ export default createGlobalStyle`
 
     body {
         background-color: #050505;
+        
+        @media screen and (max-width: 1616px) {
+            padding: 0 1.5rem;
+        }
     }
 `;

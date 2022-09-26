@@ -1,7 +1,7 @@
 import ActivityCard from '../../components/Cards/ActivityCard';
 import { Container } from './style';
 import { IActivity } from '../../types';
-import { getActivities } from '../../services/users/activityRequests';
+import { getActivities } from '../../services/activities/activityRequests';
 import { useState, useEffect } from 'preact/hooks';
 
 const Activities = () => {

@@ -18,7 +18,7 @@ import {
 
 const UserCard = ({ _id, name, email, age, observations}: IUser) => {
 
-    const number = Math.floor(Math.random() * 9);
+    const number = Math.floor(Math.random() * 99);
 
     const handleDelete = async () => {
         const data = await deleteUser(_id);
