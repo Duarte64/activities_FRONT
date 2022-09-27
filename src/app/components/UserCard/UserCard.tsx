@@ -15,6 +15,7 @@ import {
     ProfileImage ,
     ActionsIcons
 } from "./style";
+import { memo } from 'preact/compat';
 
 const UserCard = ({ _id, name, email, age, observations}: IUser) => {
 
@@ -64,4 +65,4 @@ const UserCard = ({ _id, name, email, age, observations}: IUser) => {
     )
 }
 
-export default UserCard;
+export default memo(UserCard);

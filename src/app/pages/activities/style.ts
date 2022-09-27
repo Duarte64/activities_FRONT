@@ -33,7 +33,7 @@ export const Container = styled.div`
             border-bottom: 1px solid white;
 
             tr {
-                height: 56px;
+                height: 64px;
             }
         }
 
@@ -44,6 +44,7 @@ export const Container = styled.div`
                 padding: 8px 16px;
                 color: #DFDFDF;
                 font-weight: 300;
+                font-size: 18px;
 
                 &:last-child {
                     border-bottom: none;
@@ -69,8 +70,8 @@ export const Container = styled.div`
                         img {
                             border-radius: 4px;
                             margin-right: 0.5em;
-                            width: 24px;
-                            height: 24px;
+                            width: 32px;
+                            height: 32px;
                         }
                     }
 

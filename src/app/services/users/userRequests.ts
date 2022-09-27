@@ -36,3 +36,13 @@ export const deleteUser = async (id: string) => {
     return data;
 };
 
+
+export const createNewUser = async (user: IUser) => {
+    const data = await request({
+        url: '/users',
+        method: 'POST',
+        data: user,
+    })
+    
+    return data;
+};

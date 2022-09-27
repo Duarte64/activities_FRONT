@@ -1,17 +1,21 @@
 import { Container } from './style';
 import { IActivity } from '../../types';
-import { deleteActivity, getActivities } from '../../services/activities/activityRequests';
-import { useState, useEffect } from 'preact/hooks';
 import { FaRegTrashAlt } from 'react-icons/fa';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
+import { useState, useEffect } from 'preact/hooks';
+import { deleteActivity, getActivities } from '../../services/activities/activityRequests';
+import ModuleHeader from '../../components/ModuleHeader';
 
 const Activities = () => {
     const [activities, setActivities] = useState<IActivity[]>([]);
+    const [nameFilter, setNameFilter] = useState<string>('');
+    const [filteredActivities, setFilteredActivities] = useState<IActivity[]>([]);
 
     useEffect(() => {
         const asyncSetActivities = async () => {
             const activities = await getActivities();
             setActivities(activities.data);
+            setFilteredActivities(activities.data);
         };
 
         asyncSetActivities();
@@ -24,8 +28,18 @@ const Activities = () => {
         }
     };
 
+    const handleChangeFilter = (event: any) => {
+        setNameFilter(event.target.value);
+    };
+
+    useEffect(() => {
+        const filtered = activities.filter((activity) => activity.title.toLowerCase().includes(nameFilter.toLowerCase()));
+        setFilteredActivities(filtered);
+    }, [nameFilter]);
+
     return (
         <Container>
+            <ModuleHeader context='Activity' onInputChange={handleChangeFilter} />
             <table>
                 <thead>
                     <tr>
@@ -37,7 +51,7 @@ const Activities = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {activities.map((activity) => (
+                    {filteredActivities.map((activity) => (
                         <tr key={activity._id}>
                             <td>{activity.title}</td>
                             <td>
@@ -50,8 +64,8 @@ const Activities = () => {
                             <td>{new Date(activity.date).toLocaleDateString()}</td>
                             <td>
                                 <div>
-                                    <FaRegTrashAlt onClick={() => handleDelete(activity._id)} size={19} fill="#b81117" />
-                                    <HiOutlinePencilAlt size={25} color="#4d8ee3" />
+                                    <FaRegTrashAlt onClick={() => handleDelete(activity._id)} size={22} fill="#b81117" />
+                                    <HiOutlinePencilAlt size={28} color="#4d8ee3" />
                                 </div>
                             </td>
                         </tr>
