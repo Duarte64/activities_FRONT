@@ -27,6 +27,16 @@ export const getActivity = async (id: string): Promise<GetActivityType> => {
   return data;
 };
 
+export const createNewActivity = async (activity: IActivity) => {
+    const data = await request({
+        url: '/activities',
+        method: 'POST',
+        data: activity,
+    })
+    
+    return data;
+};
+
 export const deleteActivity = async (id: string) => {
     const data = await request({
         url: `/activities/${id}`,
@@ -35,3 +45,13 @@ export const deleteActivity = async (id: string) => {
     
     return data;
 };
+
+export const updateActivityData = async (activity: IActivity) => {
+    const data = await request({
+        url: `/activities/${activity?._id}`,
+        method: 'PATCH',
+        data: activity,
+    })
+    
+    return data;
+}

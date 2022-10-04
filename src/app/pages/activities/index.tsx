@@ -4,12 +4,17 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { useState, useEffect } from 'preact/hooks';
 import { deleteActivity, getActivities } from '../../services/activities/activityRequests';
+import Modal from '../../components/Modal';
+import useModal from '../../hooks/useModal';
 import ModuleHeader from '../../components/ModuleHeader';
+import ActivityForm from '../../components/Forms/ActivityForm';
 
 const Activities = () => {
+    const {isShowing, toggle} = useModal();
     const [activities, setActivities] = useState<IActivity[]>([]);
     const [nameFilter, setNameFilter] = useState<string>('');
     const [filteredActivities, setFilteredActivities] = useState<IActivity[]>([]);
+    const [initialValues, setInitialValues] = useState<IActivity | undefined>();
 
     useEffect(() => {
         const asyncSetActivities = async () => {
@@ -38,41 +43,46 @@ const Activities = () => {
     }, [nameFilter]);
 
     return (
-        <Container>
-            <ModuleHeader context='Activity' onInputChange={handleChangeFilter} />
-            <table>
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>User</th>
-                        <th>Duration</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredActivities.map((activity) => (
-                        <tr key={activity._id}>
-                            <td>{activity.title}</td>
-                            <td>
-                                <div>
-                                    <img src={`https://picsum.photos/${activity.user.age}/${activity.user.age}`} alt="profile"/>
-                                    {activity.user.name}
-                                </div>
-                            </td>
-                            <td>{activity.duration} min.</td>
-                            <td>{new Date(activity.date).toLocaleDateString()}</td>
-                            <td>
-                                <div>
-                                    <FaRegTrashAlt onClick={() => handleDelete(activity._id)} size={22} fill="#b81117" />
-                                    <HiOutlinePencilAlt size={28} color="#4d8ee3" />
-                                </div>
-                            </td>
+        <>
+            <Container>
+                <ModuleHeader context='Activity' onInputChange={handleChangeFilter} />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>User</th>
+                            <th>Duration</th>
+                            <th>Date</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-        </Container>
+                    </thead>
+                    <tbody>
+                        {filteredActivities.map((activity) => (
+                            <tr key={activity._id}>
+                                <td>{activity.title}</td>
+                                <td>
+                                    <div>
+                                        <img src={`https://picsum.photos/${activity.user.age}/${activity.user.age}`} alt="profile"/>
+                                        {activity.user.name}
+                                    </div>
+                                </td>
+                                <td>{activity.duration} min.</td>
+                                <td>{new Date(activity.date).toLocaleDateString()}</td>
+                                <td>
+                                    <div>
+                                        <FaRegTrashAlt onClick={() => handleDelete(activity._id)} size={22} fill="#b81117" />
+                                        <HiOutlinePencilAlt onClick={() => {setInitialValues(activity); toggle()}} size={28} color="#4d8ee3" />
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </Container>
+            <Modal isShowing={isShowing} hide={toggle} > 
+                <ActivityForm initialValues={initialValues} />
+            </Modal>
+        </>
     );
 };
 

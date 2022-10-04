@@ -1,6 +1,7 @@
 import Modal from "../Modal";
 import UserForm from "../Forms/UserForm";
 import useModal from "../../hooks/useModal";
+import ActivityForm from "../Forms/ActivityForm";
 import { HiOutlinePlus } from "react-icons/hi";
 import { useState, useEffect } from 'preact/hooks';
 import { Container, Input, Button } from "./style";
@@ -19,7 +20,7 @@ const ModuleHeader = ({context, onInputChange}: Props) => {
                 <Input type="text" placeholder={`Find ${context}`} onChange={(event) => onInputChange(event)}/>
             </Container>
             <Modal isShowing={isShowing} hide={toggle} > 
-                {context === 'User' ? <UserForm /> : <UserForm />}
+                {context === 'User' ? <UserForm /> : <ActivityForm />}
             </Modal>
         </>
     );
