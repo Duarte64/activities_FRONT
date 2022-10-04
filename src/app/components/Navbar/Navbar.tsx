@@ -13,7 +13,6 @@ const Navbar = () => {
                     <ListItem>Activities</ListItem>
                 </Link>
             </List>
-            <VscGear size={26} fill={'#FFFFFF'} />
         </Container>
     );
 }

@@ -1,3 +1,7 @@
+import Modal from "../Modal";
+import UserForm from "../Forms/UserForm";
+import useModal from "../../hooks/useModal";
+import { memo } from 'preact/compat';
 import { IUser } from "../../types";
 import { deleteUser } from "../../services/users/userRequests";
 import { FaRegTrashAlt } from 'react-icons/fa';
@@ -15,12 +19,13 @@ import {
     ProfileImage ,
     ActionsIcons
 } from "./style";
-import { memo } from 'preact/compat';
 
-const UserCard = ({ _id, name, email, age, observations}: IUser) => {
+
+const UserCard = ({ _id, name, email, age, observations, birthdate}: IUser) => {
 
     const number = Math.floor(Math.random() * 99);
-
+    const {isShowing, toggle} = useModal();
+    
     const handleDelete = async () => {
         const data = await deleteUser(_id);
         if (data.status === 200) {
@@ -29,6 +34,7 @@ const UserCard = ({ _id, name, email, age, observations}: IUser) => {
     };
 
     return (
+        <>
         <Card>
             <Header>
                 <Banner loremIpsumNumber={number} />
@@ -36,7 +42,7 @@ const UserCard = ({ _id, name, email, age, observations}: IUser) => {
             </Header>
             <ActionsIcons className="teste">
                 <FaRegTrashAlt onClick={handleDelete} size={18} />
-                <HiOutlinePencilAlt size={21} />
+                <HiOutlinePencilAlt onClick={toggle} size={21} />
             </ActionsIcons>
             <Title>
                 {name}
@@ -62,6 +68,10 @@ const UserCard = ({ _id, name, email, age, observations}: IUser) => {
                 {email}
             </Footer>
         </Card>
+        <Modal isShowing={isShowing} hide={toggle} > 
+            <UserForm initialValues={{ _id, name, email, birthdate, age, observations}} />
+        </Modal>
+        </>
     )
 }
 

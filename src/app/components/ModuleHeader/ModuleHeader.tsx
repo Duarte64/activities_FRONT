@@ -1,4 +1,6 @@
+import Modal from "../Modal";
 import UserForm from "../Forms/UserForm";
+import useModal from "../../hooks/useModal";
 import { HiOutlinePlus } from "react-icons/hi";
 import { useState, useEffect } from 'preact/hooks';
 import { Container, Input, Button } from "./style";
@@ -9,15 +11,16 @@ type Props = {
 }
 
 const ModuleHeader = ({context, onInputChange}: Props) => {
-    const [showForm, setShowForm] = useState(false);
-
+    const {isShowing, toggle} = useModal();
     return (
         <>
             <Container>
-                <Button onClick={() => setShowForm(true)}><HiOutlinePlus size={22}/><span>Add {context}</span></Button>
+                <Button onClick={toggle}><HiOutlinePlus size={22}/><span>Add {context}</span></Button>
                 <Input type="text" placeholder={`Find ${context}`} onChange={(event) => onInputChange(event)}/>
             </Container>
-            {showForm && (context === 'User' ? <UserForm /> : <UserForm />)}
+            <Modal isShowing={isShowing} hide={toggle} > 
+                {context === 'User' ? <UserForm /> : <UserForm />}
+            </Modal>
         </>
     );
 }

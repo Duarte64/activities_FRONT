@@ -46,3 +46,13 @@ export const createNewUser = async (user: IUser) => {
     
     return data;
 };
+
+export const updateUserData = async (user: IUser) => {
+    const data = await request({
+        url: `/users/${user._id}`,
+        method: 'PATCH',
+        data: user,
+    })
+    
+    return data;
+}

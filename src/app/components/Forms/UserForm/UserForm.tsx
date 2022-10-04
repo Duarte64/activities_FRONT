@@ -1,17 +1,31 @@
+import { IUser } from "../../../types";
+import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
-import { createNewUser } from "../../../services/users/userRequests";
-import { ToastContainer, toast } from 'react-toastify';
-import { Container, Form, Input, Button } from "./style";
+import { createNewUser, updateUserData } from "../../../services/users/userRequests";
+import { Container, Form, Input, Button, FormTitle, Textarea } from "./style";
 import 'react-toastify/dist/ReactToastify.css';
 
-const UserForm = () => {
 
-    const { register, handleSubmit } = useForm();
+type Props = {
+    initialValues?: IUser;
+}
+
+const UserForm = ({initialValues}: Props) => {
+
+    const { register, handleSubmit } = useForm({defaultValues: initialValues});
 
     const onSubmit = async (data: any) => {
-        const response = await createNewUser(data);
-        if (response.status === 201) {
-            toast.success("User created successfully!", {
+        let response;
+        let message;
+        if (initialValues?._id === undefined) {
+            response = await createNewUser(data);
+            message = 'User created successfully!';
+        } else {
+            response = await updateUserData(data);
+            message = 'User updated successfully!';
+        }
+        if (response.status === 201 || response.status === 200) {
+            toast.success(message, {
                 autoClose: 1500,
             });
             setTimeout(() => {
@@ -23,16 +37,18 @@ const UserForm = () => {
     }
 
     return (
-        <Container>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <Input type="text" placeholder="Name*" {...register("name", {required: true})} />
-                <Input type="email" placeholder="Email*" {...register("email", {required: true})} />
-                <Input type="date" {...register("birthdate", {required: true})} />
-                <Input type="observations" placeholder="Observations" {...register("observations")} />
-                <Button type="submit">Submit</Button>
-            </Form>
-            <ToastContainer />
-        </Container>
+        <>
+            <Container>
+                <FormTitle>New User</FormTitle>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Input type="text" placeholder="Name*" {...register("name", {required: true})} />
+                    <Input type="email" placeholder="Email*" {...register("email", {required: true})} />
+                    <Input type="date" {...register("birthdate", {required: true})} />
+                    <Textarea rows={3} placeholder="Observations" {...register("observations")} />
+                    <Button type="submit">Submit</Button>
+                </Form>
+            </Container>
+        </>
     )
 }
 
