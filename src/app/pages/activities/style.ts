@@ -39,9 +39,8 @@ export const Container = styled.div`
 
         tbody {
             tr {
-                height: 48px;
+                height: 56px;
                 border-bottom: 2px solid #1e1e1e;
-                padding: 8px 16px;
                 color: #DFDFDF;
                 font-weight: 300;
                 font-size: 18px;
@@ -55,13 +54,17 @@ export const Container = styled.div`
                 }
 
                 td {
-                    padding: 16px;
+                    position: relative;
+                    padding-top: 8px;
 
                     div {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
+                        justify-content: left;
+                        height: 100%;
                         gap: 0.5em;
+                        position: relative;
 
                         svg {
                             cursor: pointer;
@@ -72,6 +75,9 @@ export const Container = styled.div`
                             margin-right: 0.5em;
                             width: 32px;
                             height: 32px;
+                            top: -6px;
+                            left: -42px;
+                            position: absolute;
                         }
                     }
 
