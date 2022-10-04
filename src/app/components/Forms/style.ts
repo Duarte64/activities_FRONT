@@ -77,3 +77,15 @@ export const FormTitle = styled.h3`
     width: 100%;
     text-align: center;
 `;
+
+export const Select = styled.select`
+    background-color: #1e1e1e;
+    border: 1px solid #888;
+    border-radius: 24px;
+    color: white;
+    height: 32px;
+    padding: 0px 12px;
+    font-size: 18px;
+    font-weight: 200;
+    width: 100%;
+`;

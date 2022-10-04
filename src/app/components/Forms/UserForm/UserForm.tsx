@@ -2,7 +2,7 @@ import { IUser } from "../../../types";
 import { toast } from 'react-toastify';
 import { useForm } from "react-hook-form";
 import { createNewUser, updateUserData } from "../../../services/users/userRequests";
-import { Container, Form, Input, Button, FormTitle, Textarea } from "./style";
+import { Container, Form, Input, Button, FormTitle, Textarea } from "../style";
 import 'react-toastify/dist/ReactToastify.css';
 
 
