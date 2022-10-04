@@ -56,6 +56,7 @@ export const Container = styled.div`
                 td {
                     position: relative;
                     padding-top: 8px;
+                    padding-left: 12px;
 
                     div {
                         display: flex;
