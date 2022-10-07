@@ -13,6 +13,9 @@ const Router = () => {
             <Routes>
                 {/* 
   // @ts-ignore */}
+                <Route path="/" element={<Users />} />
+                {/* 
+  // @ts-ignore */}
                 <Route path="/users" element={<Users />} />
                 {/* 
   // @ts-ignore */}
