@@ -40,6 +40,8 @@ const UserForm = ({initialValues}: Props) => {
         <>
             <Container>
                 <FormTitle>New User</FormTitle>
+                        {/* 
+  // @ts-ignore */}
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Input type="text" placeholder="Name*" {...register("name", {required: true})} />
                     <Input type="email" placeholder="Email*" {...register("email", {required: true})} />
