@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import { Container, List, ListItem } from "./style";
-import { VscGear } from 'react-icons/vsc'
 
 const Navbar = () => {
     return (
         <Container>
             <List>
                 <Link to="/users">
+                    {/* 
+// @ts-ignore */}
                     <ListItem>Users</ListItem>
                 </Link>
-                <Link to="/activities">
+                <Link to="/activities">{/* 
+  // @ts-ignore */}
                     <ListItem>Activities</ListItem>
                 </Link>
             </List>
