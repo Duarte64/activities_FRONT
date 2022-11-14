@@ -87,18 +87,14 @@ export const Header = styled.div`
     margin-bottom: 28px;
 `;
 
-type ImageProps = {
-    loremIpsumNumber: number;
-}
-
-export const Banner = styled.div<ImageProps>`
+export const Banner = styled.div`
     height: 100%;
     width: 100%;
-    background: ${({loremIpsumNumber}) => `url(https://picsum.photos/4${loremIpsumNumber}/1${loremIpsumNumber})`};
+    background: url(https://alkuwaiti.com/wp-content/uploads/2020/05/Hero-Banner-Placeholder-Dark-1024x480.png);
     background-size: cover;
 `;
 
-export const ProfileImage = styled.div<ImageProps>`
+export const ProfileImage = styled.div`
     width: 72px;
     height: 72px;
     border-radius: 50%;
@@ -106,7 +102,7 @@ export const ProfileImage = styled.div<ImageProps>`
     position: absolute;
     top: 16px;
     left: 16px;
-    background: ${({loremIpsumNumber}) => `url(https://picsum.photos/1${loremIpsumNumber}/1${loremIpsumNumber})`};
+    background: url(https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg);
     background-size: cover;
 `;
 
