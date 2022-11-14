@@ -6,7 +6,7 @@ import { useState, useEffect } from 'preact/hooks';
 import { deleteActivity, getActivities } from '../../services/activities/activityRequests';
 import Modal from '../../components/Modal';
 import useModal from '../../hooks/useModal';
-import IconButton from 'src/app/components/IconButton';
+import IconButton from '../../components/IconButton';
 import ModuleHeader from '../../components/ModuleHeader';
 import ActivityForm from '../../components/Forms/ActivityForm';
 
