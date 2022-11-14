@@ -6,6 +6,7 @@ import { useState, useEffect } from 'preact/hooks';
 import { deleteActivity, getActivities } from '../../services/activities/activityRequests';
 import Modal from '../../components/Modal';
 import useModal from '../../hooks/useModal';
+import IconButton from 'src/app/components/IconButton';
 import ModuleHeader from '../../components/ModuleHeader';
 import ActivityForm from '../../components/Forms/ActivityForm';
 
@@ -70,8 +71,8 @@ const Activities = () => {
                                 <td>{new Date(activity.date).toLocaleDateString()}</td>
                                 <td>
                                     <div>
-                                        <FaRegTrashAlt onClick={() => handleDelete(activity._id)} size={22} fill="#b81117" />
-                                        <HiOutlinePencilAlt onClick={() => {setInitialValues(activity); toggle()}} size={28} color="#4d8ee3" />
+                                        <IconButton onClick={() => handleDelete(activity._id)} icon={<FaRegTrashAlt size={22} color="#b81117" />}/>
+                                        <IconButton onClick={() => {setInitialValues(activity); toggle()}} icon={<HiOutlinePencilAlt size={28} color="#4d8ee3" />}/>
                                     </div>
                                 </td>
                             </tr>
