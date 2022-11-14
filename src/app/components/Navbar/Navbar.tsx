@@ -6,12 +6,9 @@ const Navbar = () => {
         <Container>
             <List>
                 <Link to="/users">
-                    {/* 
-// @ts-ignore */}
                     <ListItem>Users</ListItem>
                 </Link>
-                <Link to="/activities">{/* 
-  // @ts-ignore */}
+                <Link to="/activities">
                     <ListItem>Activities</ListItem>
                 </Link>
             </List>

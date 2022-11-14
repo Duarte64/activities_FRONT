@@ -5,20 +5,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const Router = () => {
     return (
-        //  @ts-ignore
         <BrowserRouter>
             <Navbar />
-            {/* 
-  // @ts-ignore */}
             <Routes>
-                {/* 
-  // @ts-ignore */}
                 <Route path="/" element={<Users />} />
-                {/* 
-  // @ts-ignore */}
-                <Route path="/users" element={<Users />} />
-                {/* 
-  // @ts-ignore */}
+                <Route path="/users" element={<Users />} />0'
                 <Route path="/activities" element={<Activities />} />
             </Routes> 
         </BrowserRouter>

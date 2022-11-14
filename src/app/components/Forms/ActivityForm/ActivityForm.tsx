@@ -52,8 +52,6 @@ const ActivityForm = ({initialValues}: Props) => {
         <>
             <Container>
                 <FormTitle>New Activity</FormTitle>
-                {/* 
-  // @ts-ignore */}
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Textarea placeholder="Description*" rows={3} {...register("title", {required: true})} />
                     <Select defaultValue={initialValues?.user?._id} {...register("user", {required: true})}>
