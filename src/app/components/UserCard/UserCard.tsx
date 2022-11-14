@@ -19,6 +19,7 @@ import {
     ProfileImage ,
     ActionsIcons
 } from "./style";
+import IconButton from "../IconButton";
 
 
 const UserCard = ({ _id, name, email, age, observations, birthdate}: IUser) => {
@@ -41,8 +42,8 @@ const UserCard = ({ _id, name, email, age, observations, birthdate}: IUser) => {
                 <ProfileImage loremIpsumNumber={number} />
             </Header>
             <ActionsIcons className="teste">
-                <FaRegTrashAlt onClick={handleDelete} size={18} />
-                <HiOutlinePencilAlt onClick={toggle} size={21} />
+                <IconButton onClick={handleDelete} icon={<FaRegTrashAlt size={18} />}/>
+                <IconButton onClick={toggle} icon={<HiOutlinePencilAlt size={21} />}/>
             </ActionsIcons>
             <Title>
                 {name}

@@ -17,7 +17,7 @@ const ModuleHeader = ({context, onInputChange}: Props) => {
         <>
             <Container>
                 <Button onClick={toggle}><HiOutlinePlus size={22}/><span>Add {context}</span></Button>
-                <Input type="text" placeholder={`Find ${context}`} onChange={(event) => onInputChange(event)}/>
+                <Input type="text" placeholder={`Find ${context}`} onChange={(event: any) => onInputChange(event)}/>
             </Container>
             <Modal isShowing={isShowing} hide={toggle} > 
                 {context === 'User' ? <UserForm /> : <ActivityForm />}
