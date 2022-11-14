@@ -90,7 +90,7 @@ export const Header = styled.div`
 export const Banner = styled.div`
     height: 100%;
     width: 100%;
-    background: url(https://alkuwaiti.com/wp-content/uploads/2020/05/Hero-Banner-Placeholder-Dark-1024x480.png);
+    background: url(https://codyhouse.co/app/assets/img/cta-banner-img-1.svg);
     background-size: cover;
 `;
 

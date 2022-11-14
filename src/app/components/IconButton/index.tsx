@@ -1,3 +1,5 @@
+import { CustomButton } from "./style";
+
 type Props = {
     onClick: () => void;
     icon: any;
@@ -5,9 +7,9 @@ type Props = {
 
 const IconButton = ({icon, onClick}: Props) => {
     return(
-        <button onClick={onClick}>
+        <CustomButton onClick={onClick}>
             {icon}
-        </button>
+        </CustomButton>
     )
 }
 
