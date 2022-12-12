@@ -23,8 +23,6 @@ import IconButton from "../IconButton";
 
 
 const UserCard = ({ _id, name, email, age, observations, birthdate}: IUser) => {
-
-    const number = Math.floor(Math.random() * 99);
     const {isShowing, toggle} = useModal();
     
     const handleDelete = async () => {
@@ -38,8 +36,12 @@ const UserCard = ({ _id, name, email, age, observations, birthdate}: IUser) => {
         <>
         <Card>
             <Header>
-                <Banner loremIpsumNumber={number} />
-                <ProfileImage loremIpsumNumber={number} />
+                <Banner placeholderUrl={`https://picsum.photos/2${
+                    Math.floor(Math.random() * 9) + 1
+                }0/300`}/>
+                <ProfileImage placeholderUrl={`https://picsum.photos/2${
+                    Math.floor(Math.random() * 9) + 1
+                    }0/300`} />
             </Header>
             <ActionsIcons className="teste">
                 <IconButton onClick={handleDelete} icon={<FaRegTrashAlt size={18} />}/>

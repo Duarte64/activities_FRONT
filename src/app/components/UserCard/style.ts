@@ -87,14 +87,14 @@ export const Header = styled.div`
     margin-bottom: 28px;
 `;
 
-export const Banner = styled.div`
+export const Banner = styled.div<{placeholderUrl: string}>`
     height: 100%;
     width: 100%;
-    background: url(https://codyhouse.co/app/assets/img/cta-banner-img-1.svg);
+    background: url(${({placeholderUrl}) => placeholderUrl});
     background-size: cover;
 `;
 
-export const ProfileImage = styled.div`
+export const ProfileImage = styled.div<{placeholderUrl: string}>`
     width: 72px;
     height: 72px;
     border-radius: 50%;
@@ -102,7 +102,7 @@ export const ProfileImage = styled.div`
     position: absolute;
     top: 16px;
     left: 16px;
-    background: url(https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg);
+    background: url(${({placeholderUrl}) => placeholderUrl});
     background-size: cover;
 `;
 
